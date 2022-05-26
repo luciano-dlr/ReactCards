@@ -24,6 +24,7 @@ export const Contador = ({ stock, initial, onAdd }) => {
   const comprar = () => {
     onAdd(numero);
     setNumero(1)
+    console.log(numero)
   }
 
   return (
