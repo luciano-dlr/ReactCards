@@ -1,38 +1,19 @@
-import { useState, useEffect } from "react";
-import { getProducts } from "../../asyncmock";
-import ItemList from "../ItemList/ItemList";
+import Item from "../Item/Item"
 
-const ItemDetailContainer = () => {
-
-    const [productos, setProductos] = useState([])
-
-    useEffect(() => {
-        getProducts().then(Response => {
-            setProductos(Response)
-        })
-    }, [])
-
-    function ItemDetail({ item }) {
-
-        return (
-            <div>
-                {/* // Desarrolla la vista de detalle expandida del producto con su imagen título, descripción y precio */}
-            </div>
-        )
-
-    }
-
-
-
+const ItemDetail = ({ productos }) => {
     return (
-        <div >
+        <div className="d-flex justify-content-center" >Lista
+            {
+                productos.map((p) => {
+                    return (
+                        <Item product={p} key={p.id} />
 
-
+                    )
+                })
+            }
 
         </div>
     )
-
 }
 
-
-export default ItemDetailContainer
+export default ItemDetail;
