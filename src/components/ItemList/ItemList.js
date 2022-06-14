@@ -4,7 +4,7 @@ const ItemList = ({ productos }) => {
 
     return (
 
-        <div className="d-flex justify-content-center">Lista
+        <div className="d-flex justify-content-center">
             {
                 productos.map((p) => {
                     return (
@@ -22,3 +22,8 @@ const ItemList = ({ productos }) => {
 }
 
 export default ItemList
+
+
+
+
+

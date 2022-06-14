@@ -38,3 +38,13 @@ export const getProducts = () => {
         }, 2000)
     })
 }
+
+export const getProductsByCategory = (categoryId) => {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(productos.filter(prod => prod.category === categoryId))
+        }, 200)
+    })
+}
+
+export default productos
