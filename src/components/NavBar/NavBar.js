@@ -30,7 +30,7 @@ const Navbar = () => {
                                 {/* <input className="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"></input> */}
                                 {/* <button className="btn btn-outline-success btn-dark btn-outline-light" type="submit">Buscar</button> */}
                             </form>
-                            <Link to='/cart'><CartWidget /></Link>
+                            <Link to='/'><CartWidget /></Link>
                         </div>
                     </div>
                 </nav>

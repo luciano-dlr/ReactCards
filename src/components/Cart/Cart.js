@@ -5,46 +5,46 @@ import { Link } from "react-router-dom";
 
 const Cart = () => {
     const test = useContext(CartContext);
-        return (
-            <div className="">
+    return (
+        <div className="">
             <h1>CART</h1>
             <div className="">
                 <Link to='/'><button className="btn btn-dark">CONTINUAR COMPRANDO</button></Link>
                 {
                     (test.cartList.length > 0)
-                    ? <button className="btn btn-dark mx-5" type="filled" onClick={test.removeList}>BORRAR PRODUCTOS</button>
-                    : <p>Tu carrito esta vacio</p>
+                        ? <button className="btn btn-dark mx-5" type="filled" onClick={test.removeList}>BORRAR PRODUCTOS</button>
+                        : <p>Tu carrito esta vacio</p>
                 }
             </div>
             <div>
-            
-               
-                    {
-                        test.cartList.length > 0 &&
-                            test.cartList.map(item => 
-                            <div key={item.idItem}>
+
+
+                {
+                    test.cartList.length > 0 &&
+                    test.cartList.map(item =>
+                        <div key={item.idItem}>
                             <div>
-                                <img src={item.imgItem}  width='300px' height='400px' />
+                                <img src={item.imgItem} width='300px' height='400px' />
                                 <div>
-                                <span>
-                                    <b>Producto:</b> {item.nameItem}
-                                </span>
-                                <button className='btn btn-dark mx-3' type="filled" onClick={() => test.deleteItem(item.idItem)}>BORRAR</button>
+                                    <span>
+                                        <b>Producto:</b> {item.nameItem}
+                                    </span>
+                                    <button className='btn btn-dark mx-3' type="filled" onClick={() => test.deleteItem(item.idItem)}>BORRAR</button>
                                 </div>
                             </div>
                             <div>
                                 <div>
-                                <h3>{item.qtyItem} Producto(S)</h3>
-                                
-                                <h3>$ {item.priceItem}</h3>
+                                    <h3>{item.qtyItem} Producto(S)</h3>
+
+                                    <h3>$ {item.priceItem}</h3>
                                 </div>
                                 <h3>Total: $ {test.calcTotalPerItem(item.idItem)} </h3>
                             </div>
-                            </div>
-                            )
-                    }
-                
-            {/*     {
+                        </div>
+                    )
+                }
+
+                {/*     {
                     test.cartList.length > 0 &&
                         <Summary>
                             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
@@ -73,4 +73,4 @@ const Cart = () => {
     );
 }
 
-    export default Cart;
+export default Cart;
