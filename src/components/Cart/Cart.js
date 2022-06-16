@@ -17,8 +17,6 @@ const Cart = () => {
                 }
             </div>
             <div>
-
-
                 {
                     test.cartList.length > 0 &&
                     test.cartList.map(item =>
@@ -43,7 +41,6 @@ const Cart = () => {
                         </div>
                     )
                 }
-
                 {/*     {
                     test.cartList.length > 0 &&
                         <Summary>
@@ -72,5 +69,4 @@ const Cart = () => {
         </div>
     );
 }
-
 export default Cart;

@@ -19,8 +19,8 @@
 //                 <p className="card-text description">{product.description}</p>
 //             </div>
 //             <div className='card-footer' style={{ backgroundColor: '#fff' }}>
-//                 <button className='btn btn-outline-dark'>Ver Mas</button>
 
+// {/* <button className='btn btn-outline-dark'>Ver Mas</button> */}
 //             </div>
 //             <Contador stock={10} initial={1} onAdd={onAdd} />
 //         </div>
@@ -41,7 +41,7 @@ const Item = ({ product }) => {
 
 
     return (
-        <div className="card border-0" style={{ width: '18rem', margin: '.5rem' }}>
+        <div className="card" style={{ width: '18rem', margin: '.5rem' }}>
             <img src={img} className="card-img-top" alt={name} />
 
             <div className="card-body">
