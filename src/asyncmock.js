@@ -25,7 +25,7 @@ const productos = [
         category: 'Es smart',
         img: 'https://images.samsung.com/is/image/samsung/p6pim/ar/qn65q80aagczb/gallery/ar-qled-tv-qn65q80aagczb-front-silver-531921679?$1300_1038_PNG$',
         stock: 30,
-        details: 'El procesador Quantum 4K impulsa el rendimiento completo y optimiza de manera inteligente la imagen, el sonido y demás para ofrecerte una experiencia de visualización verdaderamente impresionante.'
+        details: ' El procesador Quantum 4K impulsa el rendimiento completo y optimiza de manera inteligente la imagen, el sonido y demás para ofrecerte una experiencia de visualización verdaderamente impresionante.'
     },
 ]
 
