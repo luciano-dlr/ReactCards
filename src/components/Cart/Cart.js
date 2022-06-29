@@ -1,9 +1,12 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { CartContext } from "../Context/CartContext";
 import React from "react"
 import { Link } from "react-router-dom";
-import { collection, doc, setDoc, serverTimestamp, updateDoc, increment } from "firebase/firestore";
+import { collection, doc, setDoc, serverTimestamp, updateDoc, increment, addDoc } from "firebase/firestore";
 import db from '../../services/firebaseConfig';
+import Formulario from "../Form/Formulario";
+import { useForm } from "react-hook-form";
+
 
 const Cart = () => {
     const test = useContext(CartContext);
@@ -14,7 +17,8 @@ const Cart = () => {
             id: item.idItem,
             name: item.nameItem,
             price: item.priceItem,
-            qty: item.quantityItem
+            qty: item.quantityItem,
+            cliente: datos,
         }));
 
         test.cartList.forEach(async (item) => {
@@ -25,11 +29,6 @@ const Cart = () => {
         });
 
         let order = {
-            buyer: {
-                name: "Comprador",
-                email: "correo@correo.com",
-                phone: "41482824"
-            },
             total: test.sumaTotalProduct(),
             items: itemsForDB,
             date: serverTimestamp()
@@ -50,8 +49,89 @@ const Cart = () => {
         test.removeList();
     }
 
+
+    const { register } = useForm();
+    const { cartList, sumaTotalProduct, removeList } = useContext(CartContext)
+
+    const [datos, setDatos] = useState({
+        nombre: '',
+        email: '',
+        cel: '',
+        direccion: '',
+    })
+    const crearOrder = (e) => {
+        e.preventDefault();
+        const ObjOrden = {
+            cliente: datos,
+            items: cartList,
+            total: sumaTotalProduct()
+        }
+        const coleccion = collection(db, 'orders')
+        addDoc(coleccion, ObjOrden).then(({ id }) => {
+            console.log(datos);
+            // Swal.fire({
+            //     title: `Su compra de ${datos.nombre} esta en camino`,
+            //     text: `Se creo la orden con el id ${id}`,
+            //     icon: 'success',
+            // })
+            alert('Su compra de' `${datos.nombre}` `Se creo la orden con el id ${id}`)
+        })
+        removeList()
+    }
+    const handleInputChange = (e) => {
+        setDatos({
+            ...datos,
+            [e.target.name]: e.target.value
+        })
+    }
+
+
+    const handleSubmit = (e) => {
+        // Swal.fire({
+        //     title: 'Error',
+        //     Text: 'Campos requeridos',
+        //     icon: 'error'
+        // })
+        alert('error')
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return (
         <div className="container">
+
             <div className="my-3">
                 <Link to='/'><button className="btn btn-dark mx-3">AGREGAR PRODUCTOS</button></Link>
                 {
@@ -98,12 +178,19 @@ const Cart = () => {
                                 <p>Total: ${test.sumaTotalProduct()} </p>
 
                             </div>
+                            <label >Nombre completo
+                                <input type="text" placeholder="Escribe tu nombre"
+                                    {...register('nombre', { required: true, message: 'campo requerido' })}
+                                    onChange={handleInputChange}
+                                    value={datos.nombre} />
+                            </label>
                             <button onClick={createOrder} className="btn btn-dark">Finalizar Compra</button>
                         </div>
                     </div>
                 }
 
             </div>
+            {/* <Formulario /> */}
         </div>
     );
 }

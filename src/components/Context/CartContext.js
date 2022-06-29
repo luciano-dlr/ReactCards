@@ -18,6 +18,7 @@ const CartContextProvider = ({ children }) => {
                     nameItem: item.name,
                     priceItem: item.price,
                     quantityItem: qty
+                    
                 }
             ]);
         } else {
