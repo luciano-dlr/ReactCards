@@ -1,27 +1,18 @@
-import Item from "../Item/Item";
+import React from "react";
+import Item from '../Item/Item'
 
-const ItemList = ({ productos }) => {
-
+const ItemList = ({ productsList }) => {
     return (
-
-        <div className="d-flex justify-content-center">
-            {
-                productos.map((p) => {
-                    return (
-                        <Item product={p} key={p.id} />
-
-                    )
-                })
-            }
-
-
+        <div className='d-flex justify-content-between flex-wrap'>{
+            productsList.map((product) =>
+                <Item key={product.id} product={product} />)
+        }
         </div>
-
-
-    );
+    )
 }
 
-export default ItemList
+
+export default ItemList;
 
 
 

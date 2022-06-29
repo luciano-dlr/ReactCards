@@ -1,29 +1,29 @@
-import React , { useState } from 'react'
+// import React , { useState } from 'react'
 
 
-export const test = () => {
+// export const test = () => {
 
     
-    const [numero, setNumero] = useState(0)
+//     const [numero, setNumero] = useState(0)
    
 
-    const mas = () =>{
-        setNumero(numero+1)
-    }
+//     const mas = () =>{
+//         setNumero(numero+1)
+//     }
 
-    const menos  = () => {
+//     const menos  = () => {
 
-        setNumero(numero-1)
+//         setNumero(numero-1)
 
-    }
+//     }
 
-  return (
-    <div>
-    <button onClick ={mas}> + </button>
-    <h1>{numero}</h1>
-    <button onClick ={menos}> - </button>
-</div>
-  )
-}
+//   return (
+//     <div>
+//     <button onClick ={mas}> + </button>
+//     <h1>{numero}</h1>
+//     <button onClick ={menos}> - </button>
+// </div>
+//   )
+// }
 
 

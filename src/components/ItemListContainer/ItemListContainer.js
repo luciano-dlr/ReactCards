@@ -1,76 +1,38 @@
-import './ItemListContainer.css'
 import React from 'react'
-import ItemList from '../ItemList/ItemList';
-import { useState, useEffect } from "react";
-import { getProducts, getProductsByCategory } from "../../asyncmock";
+import './ItemListContainer.css'
+import { useState, useEffect } from 'react'
+import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom';
+import { firestoreFetch } from '../../services/firestoreFetch';
 
 
 
-const ItemListContainer = () => {
-    const [productos, setProductos] = useState([])
-    const [loading, setLoading] = useState(true)
+const ItemListContainer = ({ greeting }) => {
+    const [datos, setDatos] = useState([])
 
-    const {categoryId} = useParams()
-
-    // useEffect(() => {
-    //     getProducts().then(Response => {
-    //         setProductos(Response)
+    const { idcategory } = useParams()
 
 
-    //     })
-    // }, [])
+    useEffect(() => {
+        firestoreFetch(idcategory)
+            .then(result => setDatos(result))
+            .catch(err => console.log(err));
+    }, [idcategory]);
 
-    useEffect(()=>{
-        setLoading(true)
-        if(!categoryId){
-        getProducts()
-        .then((Res)=>setProductos(Res))
-        .catch((err)=> console.log(err))
-        .finally(()=>setLoading(false))
-    }else {
-        getProductsByCategory(categoryId).then(response => {
-            setProductos(response)
-        }).catch(error => {
-            console.log(error)
-        }).finally(() => {
-            setLoading(false)
+
+    useEffect(() => {
+        return (() => {
+            setDatos([]);
         })
-    }
-}, [categoryId])
+    }, []);
 
-if(loading) {
-    return <h1>Loading...</h1>
-}
-
-
-
-
-
- 
 
     return (
-        // <div>
-        //     <h1>{prop.greeting}</h1>
-        //     <ItemList productos={productos} />
-        // </div >
         <>
-        <h1 className='d-flex justify-content-center'>Ofertas destacadas</h1>
-        { 
-                productos.length > 0 
-                    ? <ItemList productos={productos} />
-                    : <h2>No hay productos</h2>
-                }
-        
-        
-       </> 
-    )
+            <h1 className='d-flex justify-content-center'>{greeting}</h1>
+            <ItemList productsList={datos} />
+        </>
+    );
 }
 
-export default ItemListContainer
-
-
-
-
-
-
+export default ItemListContainer;
