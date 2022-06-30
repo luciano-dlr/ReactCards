@@ -51,7 +51,7 @@ const Cart = () => {
 
 
     const { register } = useForm();
-    const { cartList, sumaTotalProduct, removeList } = useContext(CartContext)
+    // const { cartList, sumaTotalProduct, removeList } = useContext(CartContext)
 
     const [datos, setDatos] = useState({
         nombre: '',
@@ -59,25 +59,7 @@ const Cart = () => {
         cel: '',
         direccion: '',
     })
-    const crearOrder = (e) => {
-        e.preventDefault();
-        const ObjOrden = {
-            cliente: datos,
-            items: cartList,
-            total: sumaTotalProduct()
-        }
-        const coleccion = collection(db, 'orders')
-        addDoc(coleccion, ObjOrden).then(({ id }) => {
-            console.log(datos);
-            // Swal.fire({
-            //     title: `Su compra de ${datos.nombre} esta en camino`,
-            //     text: `Se creo la orden con el id ${id}`,
-            //     icon: 'success',
-            // })
-            alert('Su compra de' `${datos.nombre}` `Se creo la orden con el id ${id}`)
-        })
-        removeList()
-    }
+ 
     const handleInputChange = (e) => {
         setDatos({
             ...datos,
@@ -86,45 +68,21 @@ const Cart = () => {
     }
 
 
-    const handleSubmit = (e) => {
-        // Swal.fire({
-        //     title: 'Error',
-        //     Text: 'Campos requeridos',
-        //     icon: 'error'
-        // })
-        alert('error')
+  
 
+    const validateFormSchema = {
+        name: {
+            required: 'Por favor ingresa un nombre.',
+            min: {
+                limit: 7,
+                message: limit => `El límite es de ${limit} carácteres.`
+            }
+        },
+        email: {
+            required: 'Por favor debe ingresar su correo electrónico',
+            isEmail: true,
+        }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -184,6 +142,7 @@ const Cart = () => {
                                     onChange={handleInputChange}
                                     value={datos.nombre} />
                             </label>
+
                             <button onClick={createOrder} className="btn btn-dark">Finalizar Compra</button>
                         </div>
                     </div>
@@ -196,3 +155,4 @@ const Cart = () => {
 }
 
 export default Cart;
+
