@@ -18,13 +18,13 @@ const Cart = () => {
         direccion: '',
     })
 
-    const { nombre, email, cel, direccion } = formValues
+    const { nombre, email, cel, direccion } = formValues;
 
 
     const test = useContext(CartContext);
 
-    const createOrder = () => {
-
+    const createOrder = (e) => {
+        e.preventDefault()
         const itemsForDB = test.cartList.map(item => ({
             id: item.idItem,
             name: item.nameItem,
@@ -65,12 +65,12 @@ const Cart = () => {
 
     // const { cartList, sumaTotalProduct, removeList } = useContext(CartContext)
 
-    const [datos, setDatos] = useState({
-        // nombre: '',
-        // email: '',
-        // cel: '',
-        // direccion: '',
-    })
+    // const [datos, setDatos] = useState({
+    //     nombre: '',
+    //     email: '',
+    //     cel: '',
+    //     direccion: '',
+    // })
 
     // const handleInputChange = (e) => {
     //     setDatos({
@@ -83,6 +83,49 @@ const Cart = () => {
 
 
 
+    // const test = useContext(CartContext);
+
+    // const createOrder = () => {
+
+    //     const itemsForDB = test.cartList.map(item => ({
+    //         id: item.idItem,
+    //         name: item.nameItem,
+    //         price: item.priceItem,
+    //         qty: item.quantityItem
+    //     }));
+
+    //     test.cartList.forEach(async (item) => {
+    //         const itemRef = doc(db, "products", item.idItem);
+    //         await updateDoc(itemRef, {
+    //             stock: increment(-item.quantityItem)
+    //         });
+    //     });
+
+    //     let order = {
+    //         buyer: {
+    //             name: "Comprador",
+    //             email: "correo@correo.com",
+    //             phone: "41482824"
+    //         },
+    //         total: test.sumaTotalProduct(),
+    //         items: itemsForDB,
+    //         date: serverTimestamp()
+    //     };
+
+
+    //     const createOrderInFirestore = async () => {
+    //         const newOrderRef = doc(collection(db, "orders"));
+    //         await setDoc(newOrderRef, order);
+    //         return newOrderRef;
+    //     }
+
+    //     createOrderInFirestore()
+    //         .then(result => alert('Su id de orden es ID: ' + result.id))
+    //         .catch(err => console.log(err));
+
+
+    //     test.removeList();
+    // }
 
 
     return (
@@ -97,8 +140,6 @@ const Cart = () => {
                 }
             </div>
             <div className="row">
-
-
                 {
                     test.cartList.length > 0 &&
                     test.cartList.map(item =>
@@ -134,28 +175,36 @@ const Cart = () => {
                                 <p>Total: ${test.sumaTotalProduct()} </p>
 
                             </div>
-                            <form onSubmit={createOrder}>
+                            <form className="row" onSubmit={createOrder}>
                                 <label >Nombre completo
-                                    <input type="text" placeholder="Escribe tu nombre"
-                                        // {...register('nombre', { required: true, message: 'campo requerido' })}
+                                    <input
+                                        name="nombre"
+                                        type="text"
+                                        placeholder="Escribe tu nombre"
                                         onChange={handleImputChange}
                                         value={nombre} />
                                 </label>
                                 <label >Email
-                                    <input type="email" placeholder="Escribe tu nombre"
-                                        // {...register('nombre', { required: true, message: 'campo requerido' })}
+                                    <input
+                                        name="email"
+                                        type="email"
+                                        placeholder="Escribe tu nombre"
                                         onChange={handleImputChange}
                                         value={email} />
                                 </label>
                                 <label >Telefono
-                                    <input type="tel" placeholder="Escribe tu nombre"
-                                        // {...register('nombre', { required: true, message: 'campo requerido' })}
+                                    <input
+                                        name="cel"
+                                        type="number"
+                                        placeholder="Escribe tu nombre"
                                         onChange={handleImputChange}
                                         value={cel} />
                                 </label>
                                 <label >Direccion
-                                    <input type="text" placeholder="Escribe tu nombre"
-                                        // {...register('nombre', { required: true, message: 'campo requerido' })}
+                                    <input
+                                        name="direccion"
+                                        type="text"
+                                        placeholder="Escribe tu nombre"
                                         onChange={handleImputChange}
                                         value={direccion} />
                                 </label>
@@ -166,7 +215,7 @@ const Cart = () => {
                 }
 
             </div>
-            {/* <Formulario />onClick={createOrder} */}
+            {/* <Formulario /> */}
         </div>
     );
 }

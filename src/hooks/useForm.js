@@ -4,15 +4,16 @@ export const useForm = (state = {}) => {
 
     const [values, setValues] = useState(state)
 
-    const handleImputChange = ({ target }) => {
 
+
+    const handleImputChange = ({ target }) => {
         setValues({
             ...values,
             [target.name]: target.value
 
         })
     }
-    return [values, handleImputChange()]
+    return [values, handleImputChange]
 
 
 }
