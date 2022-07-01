@@ -30,14 +30,14 @@ const productos = [
 ]
 
 
-export const getProducts = () => {
+// export const getProducts = () => {
 
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(productos)
-        }, 2000)
-    })
-}
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             resolve(productos)
+//         }, 2000)
+//     })
+// }
 
 export const getProductsByCategory = (categoryId) => {
     return new Promise(resolve => {

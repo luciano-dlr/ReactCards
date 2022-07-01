@@ -4,11 +4,23 @@ import React from "react"
 import { Link } from "react-router-dom";
 import { collection, doc, setDoc, serverTimestamp, updateDoc, increment, addDoc } from "firebase/firestore";
 import db from '../../services/firebaseConfig';
-import Formulario from "../Form/Formulario";
-import { useForm } from "react-hook-form";
+import { useForm } from "../../hooks/useForm";
+
+
 
 
 const Cart = () => {
+
+    const [formValues, handleImputChange] = useForm({
+        nombre: '',
+        email: '',
+        cel: '',
+        direccion: '',
+    })
+
+    const { nombre, email, cel, direccion } = formValues
+
+
     const test = useContext(CartContext);
 
     const createOrder = () => {
@@ -18,7 +30,7 @@ const Cart = () => {
             name: item.nameItem,
             price: item.priceItem,
             qty: item.quantityItem,
-            cliente: datos,
+            cliente: formValues,
         }));
 
         test.cartList.forEach(async (item) => {
@@ -50,39 +62,25 @@ const Cart = () => {
     }
 
 
-    const { register } = useForm();
+
     // const { cartList, sumaTotalProduct, removeList } = useContext(CartContext)
 
     const [datos, setDatos] = useState({
-        nombre: '',
-        email: '',
-        cel: '',
-        direccion: '',
+        // nombre: '',
+        // email: '',
+        // cel: '',
+        // direccion: '',
     })
- 
-    const handleInputChange = (e) => {
-        setDatos({
-            ...datos,
-            [e.target.name]: e.target.value
-        })
-    }
+
+    // const handleInputChange = (e) => {
+    //     setDatos({
+    //         ...datos,
+    //         [e.target.name]: e.target.value
+    //     })
+    // }
 
 
-  
 
-    const validateFormSchema = {
-        name: {
-            required: 'Por favor ingresa un nombre.',
-            min: {
-                limit: 7,
-                message: limit => `El límite es de ${limit} carácteres.`
-            }
-        },
-        email: {
-            required: 'Por favor debe ingresar su correo electrónico',
-            isEmail: true,
-        }
-    }
 
 
 
@@ -136,20 +134,39 @@ const Cart = () => {
                                 <p>Total: ${test.sumaTotalProduct()} </p>
 
                             </div>
-                            <label >Nombre completo
-                                <input type="text" placeholder="Escribe tu nombre"
-                                    {...register('nombre', { required: true, message: 'campo requerido' })}
-                                    onChange={handleInputChange}
-                                    value={datos.nombre} />
-                            </label>
-
-                            <button onClick={createOrder} className="btn btn-dark">Finalizar Compra</button>
+                            <form onSubmit={createOrder}>
+                                <label >Nombre completo
+                                    <input type="text" placeholder="Escribe tu nombre"
+                                        // {...register('nombre', { required: true, message: 'campo requerido' })}
+                                        onChange={handleImputChange}
+                                        value={nombre} />
+                                </label>
+                                <label >Email
+                                    <input type="email" placeholder="Escribe tu nombre"
+                                        // {...register('nombre', { required: true, message: 'campo requerido' })}
+                                        onChange={handleImputChange}
+                                        value={email} />
+                                </label>
+                                <label >Telefono
+                                    <input type="tel" placeholder="Escribe tu nombre"
+                                        // {...register('nombre', { required: true, message: 'campo requerido' })}
+                                        onChange={handleImputChange}
+                                        value={cel} />
+                                </label>
+                                <label >Direccion
+                                    <input type="text" placeholder="Escribe tu nombre"
+                                        // {...register('nombre', { required: true, message: 'campo requerido' })}
+                                        onChange={handleImputChange}
+                                        value={direccion} />
+                                </label>
+                                <button type="submit" className="btn btn-dark">Finalizar Compra</button>
+                            </form>
                         </div>
                     </div>
                 }
 
             </div>
-            {/* <Formulario /> */}
+            {/* <Formulario />onClick={createOrder} */}
         </div>
     );
 }
