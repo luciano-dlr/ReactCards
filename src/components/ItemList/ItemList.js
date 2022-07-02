@@ -1,9 +1,10 @@
 import React from "react";
-import Item from '../Item/Item'
+import Item from '../Item/Item';
+import './ItemList.css';
 
 const ItemList = ({ productsList }) => {
     return (
-        <div className='d-flex justify-content-between flex-wrap'>{
+        <div className='d-flex justify-content-between flex-wrap fondo'>{
             productsList.map((product) =>
                 <Item key={product.id} product={product} />)
         }

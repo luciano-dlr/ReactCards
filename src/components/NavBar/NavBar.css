@@ -1,5 +1,13 @@
-ul {
-    background-color: yellow;
-    gap: 10px;
+.navBar_container {
+    background-color: #353535;
+    display: flex;
+    justify-content: space-around;
+}
+
+.categorys {
+    background: white;
+    color: black;
+    border-color: transparent;
+    gap: 40px;
 
 }

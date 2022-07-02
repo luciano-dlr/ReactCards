@@ -5,6 +5,10 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import Cart from './components/Cart/Cart';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CartContextProvider from './components/Context/CartContext';
+import './App.css';
+
+
+
 
 const App = () => {
 
@@ -24,3 +28,6 @@ const App = () => {
   );
 }
 export default App;
+
+
+
