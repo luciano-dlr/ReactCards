@@ -7,8 +7,6 @@ import db from '../../services/firebaseConfig';
 import { useForm } from "../../hooks/useForm";
 
 
-
-
 const Cart = () => {
 
     const [formValues, handleImputChange] = useForm({
@@ -60,74 +58,6 @@ const Cart = () => {
 
         test.removeList();
     }
-
-
-
-    // const { cartList, sumaTotalProduct, removeList } = useContext(CartContext)
-
-    // const [datos, setDatos] = useState({
-    //     nombre: '',
-    //     email: '',
-    //     cel: '',
-    //     direccion: '',
-    // })
-
-    // const handleInputChange = (e) => {
-    //     setDatos({
-    //         ...datos,
-    //         [e.target.name]: e.target.value
-    //     })
-    // }
-
-
-
-
-
-    // const test = useContext(CartContext);
-
-    // const createOrder = () => {
-
-    //     const itemsForDB = test.cartList.map(item => ({
-    //         id: item.idItem,
-    //         name: item.nameItem,
-    //         price: item.priceItem,
-    //         qty: item.quantityItem
-    //     }));
-
-    //     test.cartList.forEach(async (item) => {
-    //         const itemRef = doc(db, "products", item.idItem);
-    //         await updateDoc(itemRef, {
-    //             stock: increment(-item.quantityItem)
-    //         });
-    //     });
-
-    //     let order = {
-    //         buyer: {
-    //             name: "Comprador",
-    //             email: "correo@correo.com",
-    //             phone: "41482824"
-    //         },
-    //         total: test.sumaTotalProduct(),
-    //         items: itemsForDB,
-    //         date: serverTimestamp()
-    //     };
-
-
-    //     const createOrderInFirestore = async () => {
-    //         const newOrderRef = doc(collection(db, "orders"));
-    //         await setDoc(newOrderRef, order);
-    //         return newOrderRef;
-    //     }
-
-    //     createOrderInFirestore()
-    //         .then(result => alert('Su id de orden es ID: ' + result.id))
-    //         .catch(err => console.log(err));
-
-
-    //     test.removeList();
-    // }
-
-
     return (
         <div className="container">
 

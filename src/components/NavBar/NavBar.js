@@ -3,10 +3,6 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import CartWidget from './CartWidget';
 
-
-
-
-
 const Navbar = () => {
     return (
         <div>
@@ -26,11 +22,7 @@ const Navbar = () => {
                                 <li className="nav-item">
                                     <NavLink to='/category/monitor'><div className="nav-link active" aria-current="page" href="#">Monitor</div></NavLink>
                                 </li>
-                                {/* <li className="nav-item">
-          <a className="nav-link active" href="#">Contacto</a>
-        </li> */}
                             </ul>
-
                             <Link to='/cart'><CartWidget /></Link>
                         </div>
                     </div>

@@ -4,8 +4,6 @@ export const useForm = (state = {}) => {
 
     const [values, setValues] = useState(state)
 
-
-
     const handleImputChange = ({ target }) => {
         setValues({
             ...values,
@@ -14,6 +12,5 @@ export const useForm = (state = {}) => {
         })
     }
     return [values, handleImputChange]
-
 
 }

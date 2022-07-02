@@ -5,13 +5,9 @@ import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom';
 import { firestoreFetch } from '../../services/firestoreFetch';
 
-
-
 const ItemListContainer = ({ greeting }) => {
     const [datos, setDatos] = useState([])
-
     const { idcategory } = useParams()
-
 
     useEffect(() => {
         firestoreFetch(idcategory)
