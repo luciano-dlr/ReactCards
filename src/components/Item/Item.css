@@ -6,3 +6,8 @@
 .fondo_card {
     background: rgb(141, 141, 141);
 }
+
+.title {
+    font-size: 22px;
+    color: black;
+}
