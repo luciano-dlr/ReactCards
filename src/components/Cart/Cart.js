@@ -1,8 +1,8 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { CartContext } from "../Context/CartContext";
 import React from "react"
 import { Link } from "react-router-dom";
-import { collection, doc, setDoc, serverTimestamp, updateDoc, increment, addDoc } from "firebase/firestore";
+import { collection, doc, setDoc, serverTimestamp, updateDoc, increment } from "firebase/firestore";
 import db from '../../services/firebaseConfig';
 import { useForm } from "../../hooks/useForm";
 
@@ -20,6 +20,7 @@ const Cart = () => {
 
 
     const test = useContext(CartContext);
+
 
     const createOrder = (e) => {
         e.preventDefault()
@@ -53,11 +54,14 @@ const Cart = () => {
 
         createOrderInFirestore()
             .then(result => alert('Su id de orden es ID: ' + result.id))
-            .catch(err => console.log(err));
+            .catch(err => console.log(err) + alert());
 
 
         test.removeList();
     }
+
+
+
     return (
         <div className="container">
 
@@ -112,13 +116,13 @@ const Cart = () => {
                                         type="text"
                                         placeholder="Escribe tu nombre"
                                         onChange={handleImputChange}
-                                        value={nombre} />
+                                        value={nombre} required />
                                 </label>
                                 <label >Email
                                     <input
                                         name="email"
                                         type="email"
-                                        placeholder="Escribe tu nombre"
+                                        placeholder="Escribe tu Email"
                                         onChange={handleImputChange}
                                         value={email} />
                                 </label>
@@ -126,7 +130,7 @@ const Cart = () => {
                                     <input
                                         name="cel"
                                         type="number"
-                                        placeholder="Escribe tu nombre"
+                                        placeholder="telefono (opcional)"
                                         onChange={handleImputChange}
                                         value={cel} />
                                 </label>
@@ -134,9 +138,9 @@ const Cart = () => {
                                     <input
                                         name="direccion"
                                         type="text"
-                                        placeholder="Escribe tu nombre"
+                                        placeholder="Direccion"
                                         onChange={handleImputChange}
-                                        value={direccion} />
+                                        value={direccion} required />
                                 </label>
                                 <button type="submit" className="btn btn-dark">Finalizar Compra</button>
                             </form>
@@ -145,7 +149,6 @@ const Cart = () => {
                 }
 
             </div>
-            {/* <Formulario /> */}
         </div>
     );
 }
