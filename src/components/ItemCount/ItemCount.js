@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 
 
-const ItemCount = ({ stock = 100, initial = 0, onAdd }) => {
+const ItemCount = ({ stock = 100, initial = 0 }) => {
   const [add, setAdd] = useState(0);
 
   useEffect(() => {
@@ -26,11 +26,6 @@ const ItemCount = ({ stock = 100, initial = 0, onAdd }) => {
         <button className="btn btn-dark" onClick={increment}>+</button>
         <div className="">{add}</div>
         <button className="btn btn-dark" onClick={decrement}>-</button>
-        {/* {
-          stock && add
-            ? <button className="btn btn-dark mx-3" onClick={() => onAdd(add)}>Add to Cart</button>
-            : <button className="btn btn-dark" >Add to Cart</button>
-        } */}
       </div>
     </>
   );

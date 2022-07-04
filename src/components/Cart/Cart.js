@@ -128,7 +128,7 @@ const Cart = () => {
                                 <input
                                     name="cel"
                                     type="number"
-                                    placeholder="telefono (opcional)"
+                                    placeholder="telefono"
                                     onChange={handleImputChange}
                                     value={cel} required />
 
@@ -139,7 +139,6 @@ const Cart = () => {
                                     placeholder="Direccion"
                                     onChange={handleImputChange}
                                     value={direccion} required />
-
                                 <button type="submit" className="btn btn-dark mt-5" onSubmit={createOrder} >Finalizar Compra</button>
                             </form>
                         </div>
