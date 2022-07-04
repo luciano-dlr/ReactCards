@@ -8,7 +8,7 @@ const Navbar = () => {
         <div>
 
             <nav className="navbar navbar-expand-lg navbar-dark navBar_container">
-                <Link to='/' className="btn btn-outline-light categorys">mercadolibre</Link>
+                <Link to='/' className="btn btn-outline-light categorys">Todos</Link>
                 <div className="nav-item">
                     <NavLink to='/category/smart'><div className="btn btn-outline-light categorys" aria-current="page" href="#">Smart</div></NavLink>
                 </div>

@@ -8,12 +8,12 @@ const Item = ({ product }) => {
 
 
     return (
-        <div className="card border-1" style={{ width: '18rem', margin: '.5rem' }}>
+        <div className="card border-1 card-container " style={{ width: '18rem', margin: '.5rem' }}>
             <img src={img} className="card-img-top" alt={name} />
 
             <div className="card-body fondo_card">
                 <h3 className="card-text title">{name}</h3>
-                <Link to={`/item/${id}`}><h5 className="btn">COMPRAR</h5></Link>
+                <Link to={`/item/${id}`}><h5 className="btn btn-outline-light btn-comprar">COMPRAR</h5></Link>
                 <div className=""><h4>Precio: ${price}</h4></div>
             </div>
         </div>

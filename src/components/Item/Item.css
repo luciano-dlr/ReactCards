@@ -1,6 +1,7 @@
 .description {
     text-align: justify;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    size: 16px;
 }
 
 .fondo_card {
@@ -10,4 +11,21 @@
 .title {
     font-size: 22px;
     color: black;
+}
+
+.card-container {
+    padding: 2px;
+
+}
+
+.card-img-top {
+    height: 55%;
+}
+
+.btn-comprar {
+    background: white;
+    color: black;
+    border-color: black;
+    gap: 40px;
+
 }

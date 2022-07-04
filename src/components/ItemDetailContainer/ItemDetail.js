@@ -1,3 +1,4 @@
+import './ItemDetail.css';
 import React from "react";
 import ItemCount from "../Count/ItemCount";
 import { Link } from "react-router-dom";
@@ -14,7 +15,7 @@ const ItemDetail = ({ item }) => {
 
 
     const onAdd = (object) => {
-        alert(`You have selected ${object} items`);
+        alert(`agregaste al carrito ${object} ${item.name} para la compra`);
         setItemCount(object);
         test.addToCart(item, object);
     }
@@ -24,7 +25,7 @@ const ItemDetail = ({ item }) => {
                 item && item.img
                     ?
 
-                    <div className='card'>
+                    <div className='card card-css'>
                         <h4>{item.name}</h4>
                         <div>
                             <img src={item.img} alt={item.name} width='300px' height='400px' />
