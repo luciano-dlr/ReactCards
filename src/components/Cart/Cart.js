@@ -9,6 +9,7 @@ import { useForm } from "../../hooks/useForm";
 
 const Cart = () => {
 
+
     const [formValues, handleImputChange] = useForm({
         nombre: '',
         email: '',
@@ -60,11 +61,8 @@ const Cart = () => {
         test.removeList();
     }
 
-
-
     return (
         <div className="container">
-
             <div className="my-3">
                 <Link to='/'><button className="btn btn-dark mx-3">AGREGAR PRODUCTOS</button></Link>
                 {
@@ -98,8 +96,6 @@ const Cart = () => {
                         </div>
                     )
                 }
-                <br></br>
-
                 {
                     test.cartList.length > 0 &&
                     <div className="col-4">
@@ -109,45 +105,46 @@ const Cart = () => {
                                 <p>Total: ${test.sumaTotalProduct()} </p>
 
                             </div>
+
                             <form className="row" onSubmit={createOrder}>
-                                <label >Nombre completo
-                                    <input
-                                        name="nombre"
-                                        type="text"
-                                        placeholder="Escribe tu nombre"
-                                        onChange={handleImputChange}
-                                        value={nombre} required />
-                                </label>
-                                <label >Email
-                                    <input
-                                        name="email"
-                                        type="email"
-                                        placeholder="Escribe tu Email"
-                                        onChange={handleImputChange}
-                                        value={email} />
-                                </label>
-                                <label >Telefono
-                                    <input
-                                        name="cel"
-                                        type="number"
-                                        placeholder="telefono (opcional)"
-                                        onChange={handleImputChange}
-                                        value={cel} />
-                                </label>
-                                <label >Direccion
-                                    <input
-                                        name="direccion"
-                                        type="text"
-                                        placeholder="Direccion"
-                                        onChange={handleImputChange}
-                                        value={direccion} required />
-                                </label>
-                                <button type="submit" className="btn btn-dark">Finalizar Compra</button>
+
+                                <label >Nombre completo</label>
+                                <input
+                                    name="nombre"
+                                    type="text"
+                                    placeholder="Escribe tu nombre"
+                                    onChange={handleImputChange}
+                                    value={nombre} required />
+
+                                <label >Email</label>
+                                <input
+                                    name="email"
+                                    type="email"
+                                    placeholder="Escribe tu Email"
+                                    onChange={handleImputChange}
+                                    value={email} required />
+
+                                <label >Telefono</label>
+                                <input
+                                    name="cel"
+                                    type="number"
+                                    placeholder="telefono (opcional)"
+                                    onChange={handleImputChange}
+                                    value={cel} required />
+
+                                <label >Direccion</label>
+                                <input
+                                    name="direccion"
+                                    type="text"
+                                    placeholder="Direccion"
+                                    onChange={handleImputChange}
+                                    value={direccion} required />
+
+                                <button type="submit" className="btn btn-dark mt-5" onSubmit={createOrder} >Finalizar Compra</button>
                             </form>
                         </div>
                     </div>
                 }
-
             </div>
         </div>
     );

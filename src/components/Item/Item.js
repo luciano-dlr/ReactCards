@@ -5,8 +5,6 @@ import './Item.css';
 const Item = ({ product }) => {
     const { id, name, img, price } = product
 
-
-
     return (
         <div className="card border-1 card-container " style={{ width: '18rem', margin: '.5rem' }}>
             <img src={img} className="card-img-top" alt={name} />

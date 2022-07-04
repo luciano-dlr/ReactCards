@@ -15,7 +15,7 @@ const Navbar = () => {
                 <div className="nav-item">
                     <NavLink to='/category/monitor'><div className="btn btn-outline-light categorys" aria-current="page" href="#">Monitor</div></NavLink>
                 </div>
-                <Link to='/cart'><CartWidget /></Link>
+                <CartWidget />
             </nav>
 
         </div>
